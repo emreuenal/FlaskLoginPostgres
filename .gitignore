@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 /config.py
+=======
+>>>>>>> b2df5708126b2843a9b481b51e346c7b0321b9be
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
@@ -128,6 +131,7 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+<<<<<<< HEAD
 .idea
 .idea/
 
@@ -202,3 +206,5 @@ fabric.properties
 
 # Android studio 3.1+ serialized cache file
 .idea/caches/build_file_checksums.ser
+=======
+>>>>>>> b2df5708126b2843a9b481b51e346c7b0321b9be
