@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="tr">
 <head>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -10,19 +11,25 @@
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>Hello, world!</title>
+    {% block head %}
+    {% endblock %}
 </head>
 <body>
-<hr>
-{% with messages = get_flashed_messages() %}
-    {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-{% endwith %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col" align="center">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
 
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+</div>
 {% block content %}{% endblock %}
 
 <!-- Optional JavaScript -->

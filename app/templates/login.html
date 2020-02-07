@@ -1,26 +1,100 @@
 {% extends "base.html" %}
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+
+{% endblock %}
+
 
 {% block content %}
-    <h1>Sign In</h1>
-    <form action="" method="post" novalidate>
-        {{ form.hidden_tag() }}
-        <p>
-            {{ form.username.label }}<br>
-            {{ form.username(size=32) }}
-            {% for error in form.username.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>
-            {{ form.password.label }}<br>
-            {{ form.password(size=32) }}
-            {% for error in form.password.errors %}
-                <span style="color: red;">[{{ error }}]</span>
-            {% endfor %}
-        </p>
-        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
-        <p>{{ form.submit() }}</p>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
+                <div class="card card-signin my-5">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Giriş Yap</h5>
+                        <form class="form-signin" method="post">
+                            {{ form.hidden_tag() }}
+                            <div class="form-label-group">
+                                <!--<input type="email" id="inputEmail" class="form-control" placeholder="Email address"
+                                       required autofocus>
+                                <label for="inputEmail">Email address</label>
+                                -->
+                                {{ form.username(class="form-control", autofocus=true, placeholder="Kullanıcı Adı", oninvalid="this.setCustomValidity('Kullanıcı Adınızı Giriniz')", oninput="setCustomValidity('')") }}
+                                {{ form.username.label }}
+                                {% for error in form.username.errors %}
+                                    <span style="color: red;">[{{ error }}]</span>
+                                {% endfor %}
+                            </div>
 
-        <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
-    </form>
+                            <div class="form-label-group">
+                                <!--
+                                <input type="password" id="inputPassword" class="form-control" placeholder="Password"
+                                       required>
+                                <label for="inputPassword">Password</label>
+                                -->
+                                {{ form.password(class="form-control", autofocus=true, placeholder="Şifre") }}
+                                {{ form.password.label }}
+                            </div>
+
+                            <div class="custom-control custom-checkbox mb-3">
+                                <!--
+                                <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                <label class="custom-control-label" for="customCheck1">Remember password</label>
+                                -->
+                                {{ form.remember_me(class="custom-control-input") }} {{ form.remember_me.label(class="custom-control-label") }}
+                            </div>
+                            <button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit">Giriş Yap
+                            </button>
+                            <hr class="my-4">
+
+                            <a href="{{ url_for('register') }}"
+                               class="btn btn-lg btn-success btn-block text-uppercase" role="button">Kaydolmak için
+                                tıklayınız!</a>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {#<div class="container mt-5">
+        <div class="row align-items-start">
+            <div class="col align-self-center">
+                <div class="d-flex justify-content-center">
+                    <h1>Giriş</h1>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+            <div class="d-flex justify-content-center">
+
+                <div class="row">
+
+
+                    <form action="" method="post" novalidate>
+                        {{ form.hidden_tag() }}
+                        <p>
+                            {{ form.username.label }}<br>
+                            {{ form.username(size=32) }}
+                            {% for error in form.username.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{ form.password.label }}<br>
+                            {{ form.password(size=32) }}
+                            {% for error in form.password.errors %}
+                                <span style="color: red;">[{{ error }}]</span>
+                            {% endfor %}
+                        </p>
+                        <p>{{ form.remember_me() }} {{ form.remember_me.label }}</p>
+                        <!--<p>{{ form.submit() }}</p>-->
+                        <p><input class="btn btn-primary" type="submit" value="Giriş Yap"></p>
+
+                        <p>Yeni Kullanıcı? <a href="{{ url_for('register') }}">Kaydolmak için tıklayınız!</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>#}
 {% endblock %}
